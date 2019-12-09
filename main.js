@@ -20,39 +20,41 @@ const Lil = () => {
     },
 
     addToStart: function(value) {
-        let obj = Node(value);
-        let current = this.head;
-        let previous = null;
+        const obj = Node(value);
+        const current = this.head;
 
-        if(obj !== previous) {
-          current.value; 
-        } 
+        if(current === null) {
+          this.head = obj;
+        } else if (current !== null) {
+          obj.next = current;
+          this.head = obj;
+        }
 
-        
-
-    },
-
-    addToEnd: function(value) {
-      let obj = Node();
-      let current = this.head;
-      let previous = null;
-
-      if(obj !== null) {
-
-      }
+      return this;
 
     },
-
-    removeFromStart: function() {
     
+    addToEnd: function(value) {
+      let obj = Node(value);
+      let current = this.head;
+      
+      if(current !== null) {
+        current = obj;
+      } 
+    },
+    
+    removeFromStart: function() {
+      const current = this.head;
+      this.head = current.next;
+      return current.value;
     },
 
     removeFromEnd: function() {
     
     },
-
-    getAt: function(i) {
     
+    getAt: function(i) {
+      
     },
 
     removeAt: function(i) {
@@ -61,8 +63,14 @@ const Lil = () => {
   }
 }
 
+const test = Lil()
+
+const result = test.head
+result;
 
 module.exports = {
   Lil,
   Node,
 }
+
+
