@@ -1,17 +1,19 @@
-const Node = () => {
-  return {}
+const Node = (value) => {
+  return {
+    value,
+    next: null
+  }
 }
 
 const Lil = () => {
   return {
     head: '',
-
     values: function() {
-
+    return Node.next.value
     },
 
     addToStart: function(value) {
-
+      
     },
 
     addToEnd: function(value) {
