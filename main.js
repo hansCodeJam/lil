@@ -20,8 +20,8 @@ const Lil = () => {
     },
 
     addToStart: function(value) {
-        const obj = Node(value);
-        const current = this.head;
+        let obj = Node(value);
+        let current = this.head;
 
         if(current === null) {
           this.head = obj;
@@ -35,30 +35,78 @@ const Lil = () => {
     },
     
     addToEnd: function(value) {
-      let obj = Node(value);
+      if(this.head === null){
+        this.head = Node(value)
+
+        return;
+      }
+
       let current = this.head;
-      
-      if(current !== null) {
-        current = obj;
-      } 
+
+      while (current.next !== null){
+        current = current.next;
+      }
+
+      current.next = Node(value);
     },
     
     removeFromStart: function() {
-      const current = this.head;
-      this.head = current.next;
-      return current.value;
+      const toBeRemoved = this.head.value;
+      this.head = this.head.next;
+
+      return toBeRemoved;
     },
 
     removeFromEnd: function() {
-    
+      let current = this.head;
+      let previous = null;
+
+      while(current.next !== null) {
+        previous = current;
+        current = current.next;
+      }
+
+      const toBeRemoved = current.value
+      previous.next = null;
+
+      return toBeRemoved;
     },
     
     getAt: function(i) {
+      if(this.head === null) {
+        return null;
+      }
+      
+      let count = 0;
+      let current = this.head;
+
+      while(count < 1) {
+        current = current.next;
+        count++;
+      }
+
+      return current.value;
       
     },
 
     removeAt: function(i) {
-    
+      if(this.head === null) {
+        return null;
+      }
+      
+      let count = 0;
+      let current = this.head;
+
+      while(count < i - 1) {
+        current = current.next;
+        count++;
+      }
+
+      
+      return toBeRemoved = current.next.value;
+      current.next = current.next.next;
+
+      return toBeRemoved;
     },
   }
 }
